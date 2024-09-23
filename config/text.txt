@@ -1,0 +1,15 @@
+TEST
+
+{
+    "token": "MTI4NzYzMzk1OTg0ODc3NTc0MQ.Gt2F56.J9iw3CNUc8w6ViWes7jWIWSdt_esp7bJnMXNmw",
+    "clientId": "1287633959848775741",
+    "guildId": "1287915368060293241"
+  }
+
+
+VFG
+    {
+    "token": "MTI4NzgxNjIxNTgwODU3MzQ4MQ.GQTNRQ.URxU_kSD-utOYDiwTSAFVTIHmYBxK1673XrCEk",
+    "clientId": "1287816215808573481",
+    "guildId": "1227313784998199307"
+  }
