@@ -1,6 +1,5 @@
-
 {
-  "token": "MTI4NzYzMzk1OTg0ODc3NTc0MQ.Gt2F56.J9iw3CNUc8w6ViWes7jWIWSdt_esp7bJnMXNmw",
-  "clientId": "1287633959848775741",
-  "guildId": "1287915368060293241"
+  "token": "YOUR_TOKEN_HERE",
+  "clientId": "YOUR_CLIENTID_HERE",
+  "guildId": "YOUR_GUILDID_HERE"
 }

@@ -6,20 +6,33 @@ const { token, guildId } = require('./config/config.json');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 
-const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+// Function to load commands recursively from a directory
+const loadCommands = (directory) => {
+    const files = fs.readdirSync(directory);
 
-for (const file of commandFiles) {
-    const filePath = path.join(commandsPath, file);
-    const command = require(filePath);
+    for (const file of files) {
+        const filePath = path.join(directory, file);
+        const stat = fs.statSync(filePath);
 
-    // Check if command has 'data' and 'execute'
-    if (command.data && command.execute) {
-        client.commands.set(command.data.name, command);
-    } else {
-        console.error(`The command at '${filePath}' is missing 'data' or 'execute'.`);
+        // If it's a directory, recurse into it
+        if (stat.isDirectory()) {
+            loadCommands(filePath);
+        } else if (file.endsWith('.js')) {
+            const command = require(filePath);
+
+            // Check if command has 'data' and 'execute'
+            if (command.data && command.execute) {
+                client.commands.set(command.data.name, command);
+            } else {
+                console.error(`The command at '${filePath}' is missing 'data' or 'execute'.`);
+            }
+        }
     }
-}
+};
+
+// Load commands from the 'commands' folder
+const commandsPath = path.join(__dirname, 'commands');
+loadCommands(commandsPath);
 
 client.once('ready', async () => {
     console.log(`Logged in as ${client.user.tag}`);
